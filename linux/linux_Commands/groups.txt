@@ -1,0 +1,174 @@
+User account in linux.
+
+1. system users -system user account automaticallly create when we install OS and application softwware.
+
+eg - 
+ root
+
+2. Normal user - Normal user accont create and delete by privilege users(root)
+
+eg - manas
+
+Every user have unique user id,
+
+0 - 999 ID reserved for system users
+
+1000 - 60000  ID use for Normal users
+
+--------------------------------------
+user Account Database:
+
+User Account Properties:   /etc/passwd
+
+User Password properties:  /etc/shadow
+
+- shadow is a file
+
+--------------------------------------
+sudo useradd -m mk	(-m creates a directory for user in /home)
+passwd mk	(you can set password)
+
+
+cat /etc/passwd
+
+ or
+vim /etc/passwd
+
+
+sudo grep mk /etc/passwd		- display property of mk
+
+mk:x:1001:1001::/home/mk:/bin/sh
+
+here, 
+	mk - user name
+	x - mask value ( in shadow password stored in masked          	format)
+	1001 - user id
+	1001- group id
+	:: - comment
+	/home/mk - Home directory
+	/bin/bash - default Log in shell
+
+
+
+
+sudo grep mk /etc/shadow
+
+mk:$y$j9T$.ozOvd4B6wPfhPjXMi7rq.$l0OU82/3nbHcfnhCyevRu93/vWap8f4l6dgOqKe2HI2:19893:0:99999:7:::
+
+
+here, 
+	mk - user
+	$y$j9T$.ozOvd4B6wPfhPjXMi7rq.$l0OU82/3nbHcfnhCyevRu93/vWap8f4l6dgOqKe2HI2  - pw in encripted format
+	19893- no of days linux has created
+	0 - min life of password
+	
+	99999 - maximum life of pw
+	
+	7 - warning days
+	:: - after 7 , expiry date if you give
+	:  - last is if inactive pw - that dt
+
+	!! - means no password has given
+
+
+
+
+Adding user to a specific directory
+useradd -d /usr/directoryname  username
+
+
+
+
+userdel	username    - delete user
+userdel -r username - delete user with all its folders
+
+
+
+su username	-switch account
+
+exit or ctrl + D 	- for log out
+
+
+
+
+changing user login name..
+usermod -l newname oldname
+
+changing user directory
+usermod -d /newdir usernmae
+
+changing user id
+usermod -u newid username
+
+
+changing user shell
+usermod -s /bin/newshellname username
+
+
+
+giving expiry date for an user passwd
+
+usermod -e "YYYY-MM-DD" username
+
+
+
+
+super user can switch to user ac without passwd
+
+user ac can not swithc to another user account without passwd
+
+user can not switch to root ac without being in sudores file. but default user of os can switch to root ac.
+
+
+locking user passwd
+uasermod -L username		- -L lock , one user can not login to another userac with 				passwd also// how to check if pw is locked or not . ans- if !  mark is there in pw section then userstand that pw is locked.
+
+ex- mk:!$y$j9T$7php5SBs/LH5FRj664AS20$6hW2qG5O9BzuulsgBNFx8kA8sL3cNUvvn9a9uit8ElC:19894:0:99999:7::19902:
+
+
+Unlocking user passwd
+uasermod -U username	--U unlock passwd
+
+
+
+
+
+Create new user in Linux
+# Add user.
+useradd -m username
+# -m creates a home directory for the user.
+
+# Set Password.
+passwd username
+
+# Set user group to sudo.
+usermod -a -G sudo username
+# -a option to add and ‘-G sudo’ means to add the user to the sudo group.
+
+chsh -s /bin/bash username
+# chsh command is used to change the login shell for a user.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
