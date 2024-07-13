@@ -1,0 +1,53 @@
+Vim : Visual Improved
+
+vim is a improved version of vi editor which distributed in Unix OS. vimis very efficient in  and popular text editor program to work with text file. vim command is used for create, edit and append data in file.
+
+vim has 3 work mode 
+1. command mode
+2. Insert mode
+3. Extended mode
+
+syntax:  vim <filename>
+
+After press enter by default you comes in command mode.
+
+press i to go command mode
+
+ESC to go into extended mode
+
+:q  - quit without saving
+:wq  - quit after saving, w- write 
+:wq!   - ! exlamation is forcefully close
+:q!	- forcefully quit without saving
+
+:se nu	- print serial number of lines for improved visuality
+:se nonu	- serial number discarded
+
+
+
+
+Command mode operation
+
+yy	- copy line
+yw	- copy word
+nyy	- for copy number of lines, ex- 4yy : copy 4 lines below
+
+dd	- delete line
+dw	- delete word
+ndd	- delete number of lines
+
+p 	- paste
+u	- undo
+ctrl + r  - redo
+
+
+gg	- go top of page
+G	- go to bottom of page
+
+go to 22th line - press 22gg
+go to 17th line - press 17gg or 17G
+
+man vim  - for help
+
+
+
