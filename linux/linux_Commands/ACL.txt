@@ -1,0 +1,133 @@
+Access control list- ACL permission
+
+-giving permission to specific user or group.
+========================================================
+getfacl dirname
+
+[root@ip-20-20-2-42 ~]# getfacl mumbai
+# file: mumbai
+# owner: rohit
+# group: mi
+user::rwx
+group::r-x
+other::---
+
+
+setting ACL directory permission for user nita:
+
+setfacl -m u:nita:rwx mumbai 	(-m for modify, u- user, rwx followed by directoryname)
+
+result:
+drwxrwx---+ 2 rohit mi 6 Jun 24 18:16 Mumbai	(+ indicates ACL permission has granted, ls -l does not show correct permission so, in this case we use getfacl dirname)
+
+
+
+Removing user permission given by ACL:
+setfacl -x u:username /dirname	(-x is removing)
+
+
+Removing All user permission given by ACL at a time:
+setfacl -b /directory
+
+
+Setting ACL directory permission for group:
+setfacl -m g:groupname:rwx directoryname
+
+
+
+
+Block a unique group accessing directory :
+
+setfacl -m g:GroupNameToBlock:--- /directory
+
+
+
+==================================================================
+Special permission:
+
+special permission design for executable files and directories
+
+
+It divide in to 3 types:
+
+1. SUID (set user ID)
+2. SGID (set group ID)
+3. Sticky Bit
+
+=====================================================================
+
+1.SUID (set user ID):
+
+When we set SUID permission on any executable file so anyone can run that file as owner.
+
+
+for set SUID permission:
+#chmod u+s /usr/bin/nmtul
+
+output: 
+drwsr-xr-x. 2 root root 6 Jun 25 19:08 /Mumbai
+
+if s small then - executable permission is granted:
+drwSr-xr-x. 2 root root 6 Jun 25 19:08 /Mumbai
+
+if S capital then - no executable permission:
+drwsr-xr-x. 2 root root 6 Jun 25 19:08 /mumbai
+
+
+to remove SUID permission:
+#chmod u-s /usr/bin/nmtul
+
+
+USEcase:
+if one user know another user passwd then they can switch within accounts but using SUID permission System admin can restrict that
+#chomd u-s /usr/bin/su
+
+how to check path?
+#which su
+
+umtui - NetworkManager tetext user interface
+
+used to set host name other than "Hostnamectl set-hostname" command
+
+
+
+
+
+
+
+2. SGID (set user group)
+When we set sgid permission then that directory group ownership inherited newly created content inside that directory. / inherit parent directory group ownership on child
+
+
+
+for set SGID permission:
+#chmod g+s /filepath 
+
+Remove SGID permission:
+#chmod g-s /filepath 
+
+
+
+3. Sticky bit:
+When we set sticky bit on any directory, then content inside that directory can only delete by its owner.
+It very useful for publicly shareable directory.
+
+for set sticky Bit
+#chmod o+t /filepath
+
+for remove sticky Bit:
+#chmod o-t /filepath
+
+
+
+
+Decimal values :
+
+SUID:4
+SGID:2
+Sticky Bit:1
+
+
+chmod 4755 /DirectoryPath		(Here, 4 is SUID permission, 7 is rwx permission for owner, 5 is rx permission for group, another 5 is rx permission for others)
+
+
