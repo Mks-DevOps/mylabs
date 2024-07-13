@@ -1,0 +1,46 @@
+What is job Automation?
+Job Automation allow us perform task automatically in os by using tools
+
+This feature is very useful for administrator to assign task to OS whenever he is not present or perform daily basis work.
+
+
+Two type of job Automation.
+1. at
+2. Crontab
+
+1. at : at command is used to execute job only one time
+
+first run
+timedatectl set-time "2023-06-20 21:06:30"
+
+if get auto time sync in enabled then run
+
+systemctl stop chronyd		(chronyd is a daemon that gives auto time and date)
+
+be a super user or use sudo on beginning of at cmd, write time with 4 hr format
+
+at 23:27 	(add commands below, ctrl + D to exit)
+command to execute
+
+
+how to list pending jobs?
+atq
+
+where does all the pending jobs resides?
+cd /var/spool/cron/atjobs
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
