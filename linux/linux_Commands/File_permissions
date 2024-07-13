@@ -1,3 +1,81 @@
+File permissions
+
+1. basic 
+
+2. special 
+
+3. ACL (access control list) permission
+
+
+
+
+
+1. Basic permission
+
+file permission
+
+directory permission
+
+ls -l  : lists all the file and directory 
+
+
+ls -l /file or dir name   : Display specific file andn dir
+
+ls -l /filename /directoryname
+
+
+
+
+-rwxrwxrwx. 1 ec2-user ec2-user 0 Jun 22 19:23 file1
+
+- means file // if you get "d" means directory // if you get "l" means shortcut
+rwx	: first rwx for user/owner  r for read , w for write and x for execute
+rwx 	: 2nd rwx is group permission
+rwx	:3rd is others users permission 
+.	:Dot is ACL permission
+1	: Link - Number of files and directory present inside || by default inside each dir there are 2 hidden directory auto created
+ec2-user	: owner of file
+2nd ec2-user	: group belongs to
+0	: size
+jun 22 : Modified date
+19:23	: Modified time
+file1	: file name
+
+
+
+u for users and owner || g for group members || O for Other grp members
+
+chmod o-rwx filename	: removing read write and execute permission for other users
+
+
+chmod o+rwx filename	:Providing read write and execute permission for other users
+
+chmod u+rwx,g+rwx,o+rwx file	: all permissions to user group and others 
+
+
+chmod ugo-rwx file1 	: all permissions removed from user group and others 
+
+chmod ugo+rwx file1	: all permissions to user group and others
+
+
+
+
+r,w,x 
+
+---  000	0		
+--x  001	1		
+-w-  010	2
+-wx  011	3			
+r--  100	4			
+r-x  101	5
+rw-  110	6			
+rwx  111	7
+
+
+
+
+
+
 Access control list- ACL permission
 
 -giving permission to specific user or group.
