@@ -1,0 +1,125 @@
+Regular expression
+
+Regular expression are special characters which help search data, matching complex patterns.
+
+
+1. GREP (Global Regular Expression print)
+
+The grep filter searches a file for a particular pattern of characters, and displays all lines that contain that pattern.
+
+grep [OPTION...] PATTERNS [FILE...]
+
+
+grep serchableword /filepath
+
+grep -i wordtosearch /path	(-i flag ignore case sensitiveness)
+
+grep -c wordtosearch /path	(-c count no of lines)
+
+grep -ic wordtosearch /path	(both ignore case sensitive and count)
+
+grep -in  word /path 	(-n number where word is matched)
+
+grep word /path /path /path	(search in which file pattern match)
+
+grep -v word /path 	(-v where pattern matches and print lines where pattern does not)
+
+grep word$ /path	( print lines which ends with given word)
+
+grep ^word /path	(print lines which start with given keyword)
+
+
+
+if you forget file name then you can search within directory with "grep -r"
+
+grep -r pattern /path
+
+redirecting grep results inside a file:
+
+grep pattern /path > newfile.txt
+
+grep pattern /path >> newfile.txt	( >> append)
+
+
+
+==========================================================================================
+
+Find command:
+
+sudo find / -name "mk.*"
+(search in / name mk keep in double quote)
+
+find /pathWhereToSearch -name "filename.extention"
+
+
+
+Find while file belongs to user:
+
+sudo find / -user username	(search while files and directories belongs to user)
+
+
+find files permission with respect group:
+
+sudo find / -group groupname
+
+
+
+find files/directory as per permission:
+
+find / -perm 4755	
+
+(4- u+s  special permission, 7- rwx for owner, 5- rx for grp, 5-rx for others)
+
+
+find files as per disc size:
+
+find / -size +10M	(search files size more than 10 MB, crosscheck result- du -sh /path)
+
+
+
+find / -size +60M -size -100M	(file side in between 60 to 100MB)
+
+
+
+
+
+
+Find all files and dir created by ubuntu user and copy those resources into backup directory:
+
+find /home/ubuntu/ -user ubuntu -exec cp -rvf {} /backup/ \;
+
+(here, -exec execute, {} all, /backup/ path, \; this command run in loop so it will stop loop)
+
+
+
+
+
+remove all the files created by ubuntu user:(it also deletes hme directory of ubuntu)
+
+find /home/ubuntu -user ubuntu -exec rm -rvf {} \;
+
+
+
+find files created by ubuntu and change all files owner to user mk:
+
+find /home/ubuntu/ -user ubuntu -exec chown mk:mk {} \;		(  {}  means all reasults)
+
+
+=========================================================================================================
+
+head /filepath	: display top 10 lines of the path file
+
+head -n 5 /path	:top 5 lines
+
+tail /path	: no -n flag so it shows last 10 lines
+
+tail -n 8 /etc/passwd	: go inside passwd file, display last 8 lines
+
+wc /path	: 4 20 220 /display path.  here 4 - no of lines, 20 no of words, 220 no of characters(calculates empty spaces), wc - word count
+
+wc -l /path	: no of lines
+wc -w /path 	: no of words
+wc -c /path	: no of char
+
+
+
