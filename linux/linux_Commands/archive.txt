@@ -1,0 +1,52 @@
+Archive/ zip - compress folder or file
+
+what is tar?
+The Linux "tar" stands for tape archive, which is used by large number of Linux/Unix system administrators to compress size or devices backup.
+
+For create archive tar used some compression algorithms such as gzip, bz2, and xz.
+
+
+
+
+how to archive?
+
+mkdir /imp
+
+tar -cvzf /home/mk/imp/backup.gz /usr/sbin
+
+	(c: create, v- verbos, z: zip, f: force fully, /imp/backup.gz  create backup.gz file ,  /usr/sbin : from here we shall archive files, go inside sbin copy files and archive to backup.gz )
+
+
+check disk space :
+
+du -sh /home/mk/imp	(du- disk usage, -sh show)
+
+
+
+tar -cvjf /home/mk/imp/backup.tar.gz2 /usr/sbin	    (j: for bz2 algorithm/technology , compress more than gz )
+
+
+tar -cvJf /home/mk/imp/backup.tar.xz /usr/sbin	    (capital J: for xz algorithm/technology , xz : exgible, compress more then gz2 and gz )
+
+
+
+tar -tvf filename		(show file permissions, -t : test)
+
+
+
+
+How to extract?
+
+tar -xvf /home/mk/imp/backup.gz		(x- extract, here we are extracting in same directory)
+
+
+tar -xvzf  /pathwithfilename -C /NewDirectoryPathToExtact	(Extracting indifferent directory)
+
+tar -xvjf  /pathwithfilename -C /NewDirectoryPathToExtact
+
+tar -xvJf  /pathwithfilename -C /NewDirectoryPathToExtact
+
+
+
+
+			
